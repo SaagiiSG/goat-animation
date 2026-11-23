@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
+    <script src="plan.js"></script>
+    <style>
+      @font-face { font-family: "Inter"; src: url("fonts/Inter%5Bopsz,wght%5D.ttf"); }
+      @font-face { font-family: "STIX"; font-style: normal; src: url("fonts/STIXTwoText%5Bwght%5D.ttf"); }
+      @font-face { font-family: "STIX"; font-style: italic; src: url("fonts/STIXTwoText-Italic%5Bwght%5D.ttf"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; font-family: "Inter", sans-serif; }
+      #root { position: relative; width: 100%; height: 100%; color: var(--ink); }
+      #head { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+      .math { font-family: "STIX", serif; white-space: nowrap; }
+      .title, .sub, #cap { position: absolute; text-align: center; transform: translateY(-50%); white-space: nowrap; }
+      .sub { font-weight: 500; color: color-mix(in srgb, var(--ink) 60%, transparent); }
+      .sub.answer { font-weight: 600; color: var(--accent-text); }
+      #win { position: absolute; background: #fff; border-radius: 14px; overflow: hidden;
+        box-shadow: 0 0 0 1px #d9d9d9, 0 6px 24px rgba(0, 0, 0, 0.08); }
+      #graph, #tools { position: absolute; left: 0; display: block; }
+      .row { position: absolute; left: 0; width: 100%; border-bottom: 1px solid #ececec; }
+      .gut { position: absolute; left: 0; top: 0; bottom: 0; width: 48px; background: #f6f6f6; border-right: 1px solid #e6e6e6; }
+      .num { position: absolute; left: 6px; top: 4px; font-size: 14px; color: #9a9a9a; }
+      .dot { position: absolute; left: 14px; top: 27px; width: 20px; height: 20px; border-radius: 50%; }
+      .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--accent); }
+      .body { position: absolute; left: 66px; right: 0; top: 0; bottom: 0; display: flex; align-items: center; transform-origin: left center; }
+      .caret { display: inline-block; width: 2.5px; height: 0.9em; margin-left: 3px; background: var(--ink); vertical-align: -0.12em; }
+      .body > * { flex: none; }
+      .lab { width: 210px; }
+      .mn, .mx { width: 40px; font-size: 18px; color: #777; }
+      .mn { text-align: right; margin-right: 14px; }
+      .mx { margin-left: 14px; }
+      .track { position: relative; width: 290px; height: 4px; border-radius: 2px; background: #d2d2d2; }
+      .handle { position: absolute; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%;
+        background: var(--accent); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35); }
+      #flower { position: absolute; }
+      #flower svg { display: block; overflow: visible; }
+      #comment { position: absolute; display: flex; align-items: center; background: #fff; opacity: 0;
+        box-shadow: 0 0 0 1px #d9d9d9, 0 6px 24px rgba(0, 0, 0, 0.08); }
+      .avatar { flex: none; width: 64px; height: 64px; margin: 0 24px 0 23px; border-radius: 50%; background: #d6d6d6; }
+      .word { flex: 1; font-size: 48px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+      .word .caret { width: 3px; background: var(--accent); }
+      .send { flex: none; margin-right: 32px; }
+      #cursor { position: absolute; left: 0; top: 0; opacity: 0; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25)); }
+      #cap { font-weight: 500; letter-spacing: 0.01em; color: color-mix(in srgb, var(--ink) 75%, transparent); }
+      #cap span { display: inline-block; margin: 0 0.13em; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{{DUR}}" data-width="1080" data-height="1920">
+      <div id="head">
+        <div class="title math"></div><div class="title math"></div>
+        <div class="sub"></div><div class="sub"></div>
+      </div>
+      <div id="win"><svg id="graph"></svg><svg id="tools"></svg></div>
+      <div id="flower"></div>
+      <div id="comment">
+        <div class="avatar"></div>
+        <div class="word"><span id="said"></span><span class="caret"></span></div>
+        <svg class="send" width="40" height="38" viewBox="0 0 40 38"><path d="M2 2 L38 19 L2 36 L8 19 Z" style="fill: var(--accent)" /></svg>
+      </div>
+      <svg id="cursor" width="32" height="44" viewBox="0 0 17.5 24">
+        <path d="M1.5 1.5 L1.5 19 L5.6 15.2 L8.4 21.6 L11.4 20.3 L8.6 14 L14.2 14 Z" fill="#000" stroke="#fff" stroke-width="2.2"
+          stroke-linejoin="round" paint-order="stroke" />
+      </svg>
+      <div id="cap"></div>
+    </div>
+    <script>
+      window.__hf = window.__hf || {};
+      window.__hf.buildReady = window.__hf.buildReady || {};
+      // ask for the fonts now: a render worker that starts mid-video must not draw its first frame in a fallback font
+      window.__hf.buildReady.fonts = Promise.all([document.fonts.load('500 32px "Inter"'), document.fonts.load('600 48px "Inter"'),
+        document.fonts.load('56px "STIX"'), document.fonts.load('italic 56px "STIX"')]).then(() => document.fonts.ready);
+      window.__lastT = 0;
+      window.addEventListener("hf-seek", (e) => {
+        window.__lastT = e.detail.time;
+        if (window.__renderAt) window.__renderAt(e.detail.time);
+      });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "goat-animation",
+  "version": "1.0.0",
+  "description": "Animation · Анимэйшн: no-camera animated videos for Reels/TikTok, drawn in code from a script and your own voice. Four styles: Wireframe (glowing line objects in the dark), Stage (soft objects on a lit stage with a paper-cut narrator made from your photo), Collage (halftone cut-outs, your own photos too, and big slamming words) and App Explainer (a graphing calculator). No API keys, no paid generators. Built on HyperFrames + three.js. Mongolian-first.",
+  "author": {
+    "name": "GOAT Academy"
+  },
+  "keywords": ["video", "animation", "reels", "tiktok", "faceless", "explainer", "wireframe", "collage", "paper-cut", "mongolian", "captions", "hyperframes", "threejs"],
+  "license": "MIT",
+  "repository": "https://github.com/SaagiiSG/goat-animation"
+}

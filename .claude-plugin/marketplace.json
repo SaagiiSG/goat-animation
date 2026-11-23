@@ -1,0 +1,14 @@
+{
+  "name": "goat-animation",
+  "owner": {
+    "name": "GOAT Academy"
+  },
+  "description": "Animation · Анимэйшн: no-camera animated videos drawn in code, in four styles. Mongolian-first.",
+  "plugins": [
+    {
+      "name": "goat-animation",
+      "source": "./",
+      "description": "Animation · Анимэйшн: no-camera animated videos drawn in code, in four styles. Mongolian-first."
+    }
+  ]
+}
