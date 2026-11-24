@@ -71,7 +71,8 @@ export function resolvePlan(plan, words, style, { end, fontPath, monoPath, planD
     // a style that prints photos (Collage) takes the user's own picture in place of an object
     if (b.photo !== undefined && !style.photos) errors.push(`beat ${k + 1}: "photo" only works in Collage; pick an object instead`);
     else if (b.photo !== undefined && b.object !== undefined) errors.push(`beat ${k + 1}: give it an "object" or a "photo", not both`);
-    else if (style.objects && b.photo === undefined && !style.objects.includes(b.object))
+    // a style may let a beat show no object (Comic: a close-up of the hero)
+    else if (style.objects && b.photo === undefined && !(style.objectOptional && b.object === undefined) && !style.objects.includes(b.object))
       errors.push(`beat ${k + 1}: object "${b.object}" isn't in the ${style.name} library. Pick one of: ${style.objects.join(", ")}`);
     if (b.count !== undefined && !(Number.isInteger(b.count) && b.count >= 1 && b.count <= 6))
       errors.push(`beat ${k + 1}: count must be a whole number from 1 to 6 (it is ${JSON.stringify(b.count)})`);
@@ -106,7 +107,7 @@ export function resolvePlan(plan, words, style, { end, fontPath, monoPath, planD
       const w = style.cta ? textWidth(cta.word, { file: fontPath, factor: 1.06 }, style.cta.size) : 0;
       if (style.cta && w > style.cta.max)
         errors.push(`the CTA word "${cta.word}" is too wide for the comment box (${Math.round(w)} px of ${style.cta.max}): use a shorter word, about 7 capitals at most`);
-      beats.push({ t, object: "comment" });
+      beats.push({ t, object: "comment", cta: true });
     }
   }
   beats.sort((a, b) => a.t - b.t);

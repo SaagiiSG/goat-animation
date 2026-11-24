@@ -2,7 +2,7 @@
 
 The code in this repository is MIT-licensed (see LICENSE). These bundled files keep their own licences:
 
-- **Fonts** in `skills/goat-animation/fonts/` (Inter, JetBrains Mono, STIX Two Text, Oswald, PT Serif Italic): SIL Open Font License 1.1. Each family's licence text sits next to it as `OFL-*.txt`.
+- **Fonts** in `skills/goat-animation/fonts/` (Inter, JetBrains Mono, STIX Two Text, Oswald, PT Serif Italic, Shantell Sans, Science Gothic): SIL Open Font License 1.1. Each family's licence text sits next to it as `OFL-*.txt`.
 - **three.js** r170 in `skills/goat-animation/shared/three/` (the core module and the addons used): MIT License, © 2010-2024 three.js authors. The licence text is `shared/three/LICENSE`.
 - **Sound effects** (`skills/goat-animation/sfx/*.wav`): made in code by GOAT Academy, part of this repository's MIT code.
 - **Brand files** in `skills/goat-animation/brands/`: the GOAT and flowersos colours, and the flowersos flower mark (`flowersos-mark.svg`), which belongs to flowersos and is included for flowersos's own videos.

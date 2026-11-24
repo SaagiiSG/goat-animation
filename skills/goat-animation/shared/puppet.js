@@ -335,7 +335,7 @@ export function makePuppet(fig = {}) {
     }
   }
   pose(0);
-  return { root, pose, head };
+  return { root, pose, head, mouth: mouthAt }; // mouth: where speech bubbles point
 }
 
 // Which mouth shape a word shows at time t: letters spread evenly over the word, vowels open, m/b/p close.

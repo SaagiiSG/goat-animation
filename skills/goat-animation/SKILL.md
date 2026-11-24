@@ -1,13 +1,14 @@
 ---
 name: goat-animation
-description: "Animation · Анимэйшн. Makes a no-camera animated video for Reels/TikTok from a script and the user's own voice recording (or no voice at all): glowing white line drawings of 3D objects floating over a faint grid floor in the dark, turning into each other on the spoken word (Wireframe), with plain captions and an optional \"Comment WORD\" ending typed into a comment box. Everything is drawn in code on the user's computer: no camera, no API keys, no paid image or video generator. Three more styles: Stage (solid toy-like objects on a lit stage with a paper-cut narrator made from the user's own photo, the stage going dark at "but here's the catch"), Collage (black-and-white halftone cut-outs on grey paper with condensed words slamming in), and App Explainer (a graphing-calculator window on cream paper that types, drags and taps on the spoken word, for maths and SAT tips). Built on HyperFrames + three.js; renders a 1080x1920 MP4. Use whenever the user wants an animation, an animated explainer, a faceless video, a wireframe or line-art video, or types /goat-animation, /анимэйшн, or says \"анимэйшн хий\", \"хөдөлгөөнт видео хий\", \"нүүргүй видео хий\", \"wireframe видео\", \"коллаж видео\", \"цаасан дүр\", \"make an animation\", \"animated explainer\", \"calculator video\", \"Desmos-style explainer\", \"app explainer\", \"collage video\", \"paper cut-out narrator\", \"make me a cartoon of myself\", even if they don't name the skill."
+description: "Animation · Анимэйшн. Makes a no-camera animated video for Reels/TikTok from a script and the user's own voice recording (or no voice at all): glowing white line drawings of 3D objects floating over a faint grid floor in the dark, turning into each other on the spoken word (Wireframe), with plain captions and an optional \"Comment WORD\" ending typed into a comment box. Everything is drawn in code on the user's computer: no camera, no API keys, no paid image or video generator. Four more styles: Stage (solid toy-like objects on a lit stage with a paper-cut narrator made from the user's own photo, the stage going dark at \"but here's the catch\"), Comic (comic panels inked and halftoned, the user's paper figure as the hero against a villain, speech bubbles, sound words and impact frames), Collage (black-and-white halftone cut-outs on grey paper with condensed words slamming in), and App Explainer (a graphing-calculator window on cream paper that types, drags and taps on the spoken word, for maths and SAT tips). Built on HyperFrames + three.js; renders a 1080x1920 MP4. Use whenever the user wants an animation, an animated explainer, a faceless video, a wireframe or line-art video, or types /goat-animation, /анимэйшн, or says \"анимэйшн хий\", \"хөдөлгөөнт видео хий\", \"нүүргүй видео хий\", \"wireframe видео\", \"коллаж видео\", \"цаасан дүр\", \"make an animation\", \"animated explainer\", \"calculator video\", \"Desmos-style explainer\", \"app explainer\", \"collage video\", \"comic video\", \"комикс хий\", \"paper cut-out narrator\", \"make me a cartoon of myself\", even if they don't name the skill."
 ---
 
 # Animation · Анимэйшн
 
-The user brings an idea. You write the script with them, they record it on their phone, and the skill draws the whole video in code, one object per idea, each arriving exactly on the word that names it. Four looks:
+The user brings an idea. You write the script with them, they record it on their phone, and the skill draws the whole video in code, one object per idea, each arriving exactly on the word that names it. Five looks:
 - **Wireframe:** glowing white line objects over a faint grid floor in the dark, each breaking apart and re-forming into the next. Small plain captions.
 - **Stage:** the same objects as solid, soft toys on a round plinth under a spotlight, with a paper-cut narrator (the user's own figure, made from their photo) standing beside them, talking, pointing and thinking. The stage can turn dark navy at the twist ("but here's the catch") and back.
+- **Comic:** each idea a comic panel, inked and halftoned like a printed comic: the user's paper figure as the hero, the problem as a villain object with an angry face, the voice's lines in speech bubbles and narration boxes, sound words (ТАС!, ШУУ!) and red-black-white impact frames on the hits.
 - **Collage:** grey folded paper; each object as a black-and-white halftone cut-out over a circle or bar in the brand colour, the spoken words slamming in, the named word huge.
 - **App Explainer:** a graphing-calculator window that types, drags and taps (maths and SAT tips).
 
@@ -32,7 +33,7 @@ A video with no voice needs no whisper-cpp. The first video with a voice downloa
 
 ## 2. Idea → script
 
-Ask what the video is about and who it is for (one question). Pick the style with them: **Wireframe** (cool, techy), **Stage** (friendly, with them on screen as a paper figure; good for a story with a twist), **Collage** (bold, editorial, words first), all from the same objects; **App Explainer** when the video shows steps on a graphing calculator (the only app so far). If they can't choose, show the three names with one line each and let them pick. Then write the script with them:
+Ask what the video is about and who it is for (one question). Pick the style with them: **Wireframe** (cool, techy), **Stage** (friendly, with them on screen as a paper figure; good for a story with a twist), **Comic** (loud and fun: them as the hero beating a problem), **Collage** (bold, editorial, words first), all from the same objects; **App Explainer** when the video shows steps on a graphing calculator (the only app so far). If they can't choose, show the three names with one line each and let them pick. Then write the script with them:
 - **30–60 seconds** when read aloud: about 2 spoken words a second (Mongolian words are longer, so lean shorter). No greeting; start on the idea. If the user brings their own script and it is much shorter, say so once and offer one or two more lines; use theirs as it is if they want.
 - **Every sentence must be something you can draw:** with one of the objects in step 5a, or, in App Explainer, with a line typed, a slider dragged or a point tapped (step 5b). If you can't picture the object for a sentence, rewrite the sentence.
 - Numbers beat adjectives, and real value beats hype. Never invent a price, a result or a date: ask.
@@ -47,9 +48,9 @@ Ask the user to record the script on their phone (a voice memo is fine: m4a, mp3
 
 **No voice** is fine too: leave `"voice"` out of the plan. Captions are then timed by reading speed, and they can add their own music file with `"music": "song.mp3"`.
 
-## 3b. Their paper figure (Stage only, once)
+## 3b. Their paper figure (Stage and Comic, once)
 
-Stage has a narrator: a paper-cut figure of the user. Make it once and keep the file; every Stage video can use it.
+Stage has a narrator and Comic a hero: a paper-cut figure of the user. Make it once and keep the file; every Stage and Comic video can use it.
 
 1. Ask for one photo of themselves (a selfie is fine): face and top half visible, glasses on if they wear them. Say why: you look at it to pick the figure's hair, glasses and clothes. The photo isn't drawn into the video and the skill never uploads it; like any picture they send you, you see it in this chat. If they'd rather not send one, ask them to describe their hair, glasses, facial hair and usual top instead.
 2. Look at the photo and write `figure.json` in the project folder, picking the nearest of each:
@@ -231,6 +232,37 @@ The example below finds k so the two lines are parallel. Use it as the model:
 - **Their own photos:** a beat can show `"photo": "photos/shop.jpg"` (a file in the project folder) instead of an `"object"`: their shop, product, team or face, printed in the same halftone. Ask for photos when the script names something real of theirs; look at each one so you put it on the word that names it, and never stand an object in for a photo they have. A normal photo is printed as a rectangle with a paper border. A PNG with the background removed is cut out round its outline, which looks best for people and products: on a Mac, open the photo in Preview, then Tools → Remove Background, then File → Export as PNG; on an iPhone, touch and hold the subject in Photos, then Share → Save Image. PNG, JPG or WEBP; a HEIC photo from an iPhone needs a JPG copy first (the checker prints the Mac command). The photos never leave their computer.
 - `cta`: the last page stamps the word in white on the brand colour. If the voice says the word, it is stamped as it's said.
 
+### 5e. Comic beats
+
+`"style": "comic"`, with `"narrator": "figure.json"` (their figure from 3b) as the hero. Each beat is a comic panel, and the skill lays out the pages: a panel fills the screen (the words and faces stay clear of the app's caption and buttons), a hero close-up right after a panel lands as an inset on it, and `count` copies stand in slanted columns. Each caption line shows as a speech bubble when the hero is in the panel and as a yellow narration box when not; the words in `say` are in the brand colour.
+
+| Beat field | What the panel shows |
+|---|---|
+| `object` | the object, inked, on a sky-blue or dotted background |
+| `object` + `"villain": true` | the object as the bad guy: big, from below, angry eyes and teeth, on a night sky. Use it for the problem (a competitor, deadlines, cheap prices) |
+| `"hero": "face"` | a close-up of the hero talking (no object needed). Right after a page with one full panel (and without `impact`) it lands as an inset on that page; otherwise it fills a page of its own. Don't put two close-ups in a row |
+| `"hero": "point"` | the hero in a power pose on a burst, the `object` (optional) floating beside them |
+| `"hero": "think"` | the hero thinking, hand on chin |
+| `"count": 2` or `3` | that many copies of the object, one per slanted column (3 at most) |
+| `"impact": true` | a quick red, black and white flash (0.13 s) on the word, then the panel lands. Two or three in a video, on the big turns, never on the first beat (the first frame is the thumbnail) |
+| `"sfx": "ТАС!"` | a sound word, huge, in the brand colour (8 characters at most): ТАС! for a hit, ШУУ! for speed, ПАД! for a thud |
+| `tag` | a small name card (as in 5a) |
+
+- **Each beat holds at least 1.5 s.** A story reads best as: the villain first, the hero's reaction as a close-up, an impact on the turn, then the answers.
+- `cta` ends on the comment box with the word stamped above it. `lines` and `photo` aren't drawn.
+
+```json
+{ "name": "price-war", "style": "comic", "brand": "goat", "language": "mn", "script": "script.txt", "voice": "voice.m4a",
+  "narrator": "figure.json",
+  "beats": [
+    { "at": 0, "object": "shop", "villain": true },
+    { "say": "Одоо", "hero": "face" },
+    { "say": "бүү", "hero": "point", "object": "coins", "impact": true },
+    { "say": "AI", "object": "robot", "count": 3, "sfx": "ТАС!", "tag": "AI БАГ" }
+  ],
+  "cta": { "say": "коммент", "word": "GOAT" } }
+```
+
 ## 6. Render
 
 Run `anim render plan.json` (in the background or with a 600000 ms timeout). If it prints problems, each line says what to change in the plan (a word it can't find lists the words around there; two beats too close says by how much). Fix them all and run it again; don't show the user these errors unless you need their help. When it works it prints the video and a contact sheet: `out/<name>.mp4` and `out/<name>-sheet.jpg`.
@@ -242,7 +274,7 @@ Open the contact sheet image and look at it yourself first. It shows one frame p
 - The first frame isn't empty, and nothing is cut off at the edges.
 - The captions read the script's words.
 
-Fix the plan and render again if anything is off. (App Explainer: the contact sheet should show the typed lines, the slider moving, and the answer in the last frames, with no text cut off.) (Stage: the narrator is whole and beside the plinth, never covering the object; the caption sits top left. Collage: the big word of each page reads whole, and no small words run off the right edge.) Then give the user the path to the MP4 and ask what they would change. Never post or send the video anywhere for them.
+Fix the plan and render again if anything is off. (App Explainer: the contact sheet should show the typed lines, the slider moving, and the answer in the last frames, with no text cut off.) (Stage: the narrator is whole and beside the plinth, never covering the object; the caption sits top left. Collage: the big word of each page reads whole, and no small words run off the right edge. Comic: every bubble's tail points at the hero, nothing covers a face, and each object sits whole in its panel.) Then give the user the path to the MP4 and ask what they would change. Never post or send the video anywhere for them.
 
 ## The look: what fails even if it renders
 

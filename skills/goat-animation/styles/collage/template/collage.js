@@ -188,7 +188,7 @@ const groupOf = (w) => GROUP.get(w) ?? -1;
 // built once Oswald has loaded, since the layout measures the words
 const buildPages = (shots) => P.beats.map((b, n) => {
   // the comment ending always takes the bar layout: the CTA word is stamped where the bar would be, and stays
-  const end = P.beats[n + 1]?.t ?? P.dur, isCta = b.object === "comment" && !!CTA && Math.abs(b.t - P.cta.t) < 1e-6, A = !isCta && n % 2 === 0, root = el("layer");
+  const end = P.beats[n + 1]?.t ?? P.dur, isCta = !!b.cta && !!CTA, A = !isCta && n % 2 === 0, root = el("layer");
   page.append(root);
   const shape = A
     ? el("shape", { left: "330px", top: "640px", width: "560px", height: "560px", borderRadius: "50%" })
