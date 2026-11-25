@@ -1,7 +1,7 @@
 {
   "name": "goat-animation",
-  "version": "1.1.0",
-  "description": "Animation · Анимэйшн: no-camera animated videos for Reels/TikTok, drawn in code from a script and your own voice. Five styles: Wireframe (glowing line objects in the dark), Stage (soft objects on a lit stage with a paper-cut narrator made from your photo), Comic (inked, halftoned comic panels with you as the hero, speech bubbles, sound words and impact frames), Collage (halftone cut-outs, your own photos too, and big slamming words) and App Explainer (a graphing calculator). No API keys, no paid generators. Built on HyperFrames + three.js. Mongolian-first.",
+  "version": "1.2.0",
+  "description": "Animation · Анимэйшн: no-camera animated videos for Reels/TikTok, drawn in code from a script and your own voice. Five styles: Wireframe (glowing line objects in the dark), Stage (soft objects on a lit stage with a paper-cut narrator made from your photo), Comic (inked, halftoned comic panels with you as the hero, speech bubbles, sound words and impact frames), Collage (halftone cut-outs, your own photos too, and big slamming words) and App Explainer (a graphing calculator). For other looks, or the look of a picture or video you like, it hands off to Lemo-Opuscar (99 code-made film styles). No API keys, no paid generators. Built on HyperFrames + three.js. Mongolian-first.",
   "author": {
     "name": "GOAT Academy"
   },
